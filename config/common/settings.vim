@@ -24,16 +24,12 @@ set conceallevel=0                      " So that I can see `` in markdown files
 set tabstop=2                           " Insert 2 spaces for a tab
 set shiftwidth=2                        " Change the number of space characters inserted for indentation
 set laststatus=2                        " Always display the status line
-set background=dark                     " Set background dark, seems only needed for vim
+set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs
 set shortmess+=c                        " This is recommended by coc. Don't pass messages to |ins-completion-menu|.
 set signcolumn=yes                      " This is recommended by coc. Always show the signcolumn, or it will blink.
-set updatetime=300                      " This is recommended by coc. Faster completion.
+set updatetime=100                      " This is recommended by coc. Faster completion.
 set timeoutlen=500                      " After how long which key menu will appear.
 set clipboard=unnamedplus               " Copy paste between vim and everything else.
-
-" Neovim specific option
-if has('nvim')
-  set jumpoptions=stack                   " Stack like but list like jump history
-endif
+set jumpoptions=stack                   " Stack like but list like jump history
 

@@ -1,5 +1,2 @@
 
-if has('nvim')
-  luafile $INITHOME/config/plug/nvim-colorizer.lua
-endif
-
+luafile $INITHOME/config/plug/nvim-colorizer.lua

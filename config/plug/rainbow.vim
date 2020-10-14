@@ -1,6 +1,6 @@
 
 "Set to 0 if you want to enable it later via :RainbowToggle
-let g:rainbow_active = 1 
+let g:rainbow_active = 0 
 
 "More config see https://github.com/luochen1990/rainbow
 let g:rainbow_conf = {

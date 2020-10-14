@@ -1,7 +1,8 @@
 " Basic Key Mappings
 
 " global Leader
-let mapleader=' '
+" let mapleader=' '
+let mapleader=';'
 
 " TAB in general mode will move to text buffer
 nnoremap <silent> <TAB> :bnext<CR>
@@ -14,29 +15,37 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-" <TAB>: completion.
+"fast close and save file
+nnoremap <leader>x :q<CR>
+nnoremap <leader>w :w<CR> 
+
+"fast back
+nnoremap <leader>; <C-o>
+
+"fast split  window
+nnoremap <silent> <leader>v :vs<CR>
+nnoremap <silent> <leader>h :sp<CR>
+
+" Alternate way to save
+nnoremap <silent> <C-s> :w<CR>
+" Alternate way to quit
+nnoremap <silent> <<C-Q> :wq!<CR>
+" Use control-c instead of escape
+nnoremap <silent> <C-c> <Esc> " <TAB>: completion.
 inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-imap <C-h> <C-w>h
-imap <C-j> <C-w>j
-imap <C-k> <C-w>k
-imap <C-l> <C-w>l
+nnoremap H <C-w>h
+nnoremap J <C-w>j
+nnoremap K <C-w>k
+nnoremap L <C-w>l
 
 
 " Terminal window navigation
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <C-H> <C-\><C-N><C-w>h
+tnoremap <C-J> <C-\><C-N><C-w>j
+tnoremap <C-K> <C-\><C-N><C-w>k
+tnoremap <C-L> <C-\><C-N><C-w>l
 tnoremap <Esc> <C-\><C-n>
 
 " Use alt + hjkl to resize windows
@@ -54,4 +63,3 @@ nnoremap P "+p
 "   would popup immediately without delay.
 " Which-key may need at least one raw mapping defined other where?
 nnoremap <leader>. :<C-U>e $MYVIMRC<CR>
-
