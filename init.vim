@@ -36,7 +36,9 @@ Plug 'puremourning/vimspector'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/jsonc.vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+"Plug 'sheerun/vim-polyglot'
+"Plug 'morhetz/gruvbox'
 call plug#end()
 
 " Put coc plugins here
@@ -51,7 +53,7 @@ let g:coc_global_extensions = [
 " Global settings
 source $INITHOME/config/common/settings.vim
 source $INITHOME/config/common/mappings.vim
-source $INITHOME/config/common/autocmd.vim
+"source $INITHOME/config/common/autocmd.vim
 source $INITHOME/config/common/functions.vim
 source $INITHOME/config/common/themes.vim
 
@@ -67,10 +69,10 @@ source $INITHOME/config/plug/fzf.vim
 source $INITHOME/config/plug/rnvimr.vim
 source $INITHOME/config/plug/gitgutter.vim
 source $INITHOME/config/plug/rainbow.vim
-source $INITHOME/config/plug/indentLine.vim
+"source $INITHOME/config/plug/indentLine.vim
 source $INITHOME/config/plug/markdown-preview.vim
 source $INITHOME/config/plug/vimspector.vim
-source $INITHOME/config/plug/vim-slime.vim
+"source $INITHOME/config/plug/vim-slime.vim
 source $INITHOME/config/plug/vim-asterisk.vim
 source $INITHOME/config/plug/easymotion.vim
 source $INITHOME/config/plug/nvim-colorizer.vim

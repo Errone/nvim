@@ -6,7 +6,7 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 
 " Jump via 2-char in all windows
-nmap s <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-overwin-f2)
 
 
 " Jump via 1-char in current line
@@ -14,4 +14,4 @@ map f <Plug>(easymotion-bd-fl)
 
 
 " Jump to {line} in all windows
-nmap t <Plug>(easymotion-overwin-line)
+nmap T <Plug>(easymotion-overwin-line)
