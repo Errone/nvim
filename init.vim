@@ -26,7 +26,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'luochen1990/rainbow'
-Plug 'Yggdroot/indentLine'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'ryanoasis/vim-devicons'
 Plug 'haya14busa/vim-asterisk'
@@ -36,9 +35,13 @@ Plug 'puremourning/vimspector'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/jsonc.vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
-"Plug 'sheerun/vim-polyglot'
-"Plug 'morhetz/gruvbox'
+
+Plug 'challenger-deep-theme/vim',{'as' : 'challenger-deep'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'dyng/ctrlsf.vim'
+Plug 'rhysd/vim-clang-format'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'nvim-treesitter/playground' 
 call plug#end()
 
 " Put coc plugins here
@@ -50,7 +53,7 @@ let g:coc_global_extensions = [
   \ ]
 
 
-" Global settings
+"Global settings 
 source $INITHOME/config/common/settings.vim
 source $INITHOME/config/common/mappings.vim
 "source $INITHOME/config/common/autocmd.vim
@@ -76,4 +79,6 @@ source $INITHOME/config/plug/vimspector.vim
 source $INITHOME/config/plug/vim-asterisk.vim
 source $INITHOME/config/plug/easymotion.vim
 source $INITHOME/config/plug/nvim-colorizer.vim
+" source $INITHOME/config/plug/vim-lsp-cxx-highlight.vim
+luafile $INITHOME/config/plug/nvim-treesitter.lua
 
