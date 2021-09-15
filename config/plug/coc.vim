@@ -1,3 +1,14 @@
+" Just use coc as lsp-client, do not use any other type of coc-plugings
+let g:coc_global_extensions = [
+  \ 'coc-sh',
+  \ 'coc-yaml', 
+  \ 'coc-python', 
+  \ 'coc-clangd', 
+  \ 'coc-vimlsp', 
+  \ 'coc-xml',
+  \ 'coc-json',
+  \ ]
+
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
@@ -11,14 +22,6 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position. 
-" Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
 
 " Use g* goto 
 nmap <silent> gd  <Plug>(coc-definition)
@@ -39,18 +42,15 @@ endfunction
 
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-" nmap <leader>rn <Plug>(coc-rename)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" augroup mygroup
+"   autocmd!
+"   " Setup formatexpr specified filetype(s).
+"   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+"   " Update signature help on jump placeholder.
+"   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+" augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -76,63 +76,20 @@ omap af <Plug>(coc-funcobj-a)
 " xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=0 FormatAndSave :call CocAction('format') | write
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings using CoCList:
-" Show all diagnostics.
-" TODO add these to which key
-" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" " Manage extensions.
-" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" " Show commands.
-" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" " Find symbol of current document.
-" nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" " Search workspace symbols.
-" nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" " Do default action for next item.
-" nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" " Do default action for previous item.
-" nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" " Resume latest coc list.
-" nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Explorer
-let g:coc_explorer_global_presets = {
-\   'floating': {
-\      'position': 'floating',
-\   },
-\   'floatingLeftside': {
-\      'position': 'floating',
-\      'floating-position': 'left-center',
-\      'floating-width': 30,
-\   },
-\   'floatingRightside': {
-\      'position': 'floating',
-\      'floating-position': 'right-center',
-\      'floating-width': 30,
-\   },
-\   'simplify': {
-\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
-"nmap <silent> <space>e :CocCommand explorer<CR>
-" nnoremap <silent> <leader>e :CocCommand explorer<CR>
-" nmap <space>f :CocCommand explorer --preset floatingRightside<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-
 " Snippets
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position. 
+" Coc only does snippet and additional edit on confirm.
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
+
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
@@ -147,3 +104,4 @@ let g:coc_snippet_prev = '<c-k>'
 
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+

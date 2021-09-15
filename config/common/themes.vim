@@ -13,5 +13,5 @@ if has('nvim') || has('termguicolors')
 endif
 
 " Set Font
-set guifont=Hack\ Nerd\ Font
+set guifont=Hack\ Nerd\ Font:h12
 

@@ -44,7 +44,7 @@ else
   nvim_image=nvim.appimage
   nvim_image_path=https://github.com/neovim/neovim/releases/download/nightly/
   wget -c -O /tmp/${nvim_image} ${nvim_image_path}/${nvim_image} || { echo Neovim install failed!!!;  exit 1; }
-  sudo cp -f /tmp/${nvim_image} /usr/bin \
+  sudo mv -f /tmp/${nvim_image} /usr/bin \
     && sudo chmod +x /usr/bin/${nvim_image} \
     && sudo ln -sf /usr/bin/${nvim_image} /usr/bin/nvim \
     && echo Neovim installed done!!!
@@ -58,6 +58,11 @@ else
   curl -sL install-node.now.sh/lts > /tmp/install_node.bash || { echo Node.js install failed!!!;  exit 1; }
   sudo bash /tmp/install_node.bash -y || { echo Node.js install failed!!!;  exit 1; }
   echo Node.js install done!!!
+fi
+
+# Check and install pip3
+if ! (pip3 --version &>> /dev/null); then
+  sudo apt install python3-pip -y
 fi
 
 # Check and install ranger
@@ -109,6 +114,10 @@ else
   echo Bat installed done!!!
 fi
 
+# Install xsel
+echo Installing bat...
+sudo apt install xsel -y
+
 # Install nerd font
 if [ ! ${force} ] && (fc-list | grep 'Hack Nerd Font' &>> /dev/null); then
   echo Hack Nerd Font already installed
@@ -123,6 +132,18 @@ else
   echo Hack Nerd Font installed done!!!
 fi
 
+if [ ! ${force} ] && (fc-list | grep 'FiraCode' &>> /dev/null); then
+  echo FiraCode Font already installed
+else
+  echo Installing FiraCode Font...
+  font_dir=~/.local/share/fonts
+  pkg=FiraCode.zip
+  pkg_path=https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/
+  mkdir -p ${font_dir} || { echo Failed to create \'${font_dir}\' directory!!!;  exit 1; }
+  wget -c -O /tmp/${pkg} ${pkg_path}/${pkg} || { echo Failed to download FiraCode font !!!;  exit 1; }
+  unzip /tmp/${pkg} -d ${font_dir} && fc-cache -vf ${font_dir} || { echo Install FiraCode font failed!!!;  exit 1; }
+  echo FiraCode font installed done!!!
+fi
 
 echo ""
 echo Install done!!!

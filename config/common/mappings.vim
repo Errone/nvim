@@ -59,6 +59,7 @@ nnoremap Y "+y
 nnoremap P "+p
 
 nnoremap <leader>= : ClangFormat <CR>
+
 " This is reduandent to what is in which-key.
 " However, without this, the popup menu of which-key 
 "   would popup immediately without delay.
