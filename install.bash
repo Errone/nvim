@@ -41,12 +41,12 @@ if [ ! ${force} ] && (nvim -v &>> /dev/null); then
   echo Neovim already installed
 else
   echo Installing neovim...
-  nvim_image=nvim.appimage
-  nvim_image_path=https://github.com/neovim/neovim/releases/download/nightly/
+  nvim_image=nvim-linux-x86_64.tar.gz
+  nvim_image_path=https://github.com/neovim/neovim/releases/download/stable
   wget -c -O /tmp/${nvim_image} ${nvim_image_path}/${nvim_image} || { echo Neovim install failed!!!;  exit 1; }
-  sudo mv -f /tmp/${nvim_image} /usr/bin \
-    && sudo chmod +x /usr/bin/${nvim_image} \
-    && sudo ln -sf /usr/bin/${nvim_image} /usr/bin/nvim \
+  mkdir -p ${HOME}/.local
+  tar xzf /tmp/${nvim_image} -C ${HOME}/.local/
+  sudo ln -s ${HOME}/.local/nvim-linux64/bin/nvim /usr/bin/nvim \
     && echo Neovim installed done!!!
 fi
 
@@ -55,7 +55,7 @@ if [ ! ${force} ] && (node -v &>> /dev/null); then
   echo Node.js already installed
 else
   echo Installing Node.js...
-  curl -sL install-node.now.sh/lts > /tmp/install_node.bash || { echo Node.js install failed!!!;  exit 1; }
+  wget install-node.now.sh/lts -O /tmp/install_node.bash || { echo Node.js install failed!!!;  exit 1; }
   sudo bash /tmp/install_node.bash -y || { echo Node.js install failed!!!;  exit 1; }
   echo Node.js install done!!!
 fi
@@ -119,6 +119,8 @@ echo Installing bat...
 sudo apt install xsel -y
 
 # Install nerd font
+sudo apt install unzip -y
+
 if [ ! ${force} ] && (fc-list | grep 'Hack Nerd Font' &>> /dev/null); then
   echo Hack Nerd Font already installed
 else

@@ -1,7 +1,6 @@
 " Basic Key Mappings
 
 " global Leader
-" let mapleader=' '
 let mapleader=';'
 
 " TAB in general mode will move to text buffer
@@ -15,38 +14,30 @@ nnoremap <silent> <S-TAB> :bprevious<CR>
 xnoremap K :move '<-2<CR>gv-gv
 xnoremap J :move '>+1<CR>gv-gv
 
-"fast close and save file
-nnoremap <leader>x :q<CR>
-nnoremap <leader>w :w<CR> 
-
-"fast back
-nnoremap <leader>; <C-o>
-
-"fast split  window
-nnoremap <silent> <leader>v :vs<CR>
-nnoremap <silent> <leader>h :sp<CR>
-
-" Alternate way to save
-nnoremap <silent> <C-s> :w<CR>
-" Alternate way to quit
-nnoremap <silent> <<C-Q> :wq!<CR>
-" Use control-c instead of escape
-nnoremap <silent> <C-c> <Esc> " <TAB>: completion.
+" <TAB>: completion.
 inoremap <silent> <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " Better window navigation
-nnoremap H <C-w>h
-nnoremap J <C-w>j
-nnoremap K <C-w>k
-nnoremap L <C-w>l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+imap <C-h> <C-w>h
+imap <C-j> <C-w>j
+imap <C-k> <C-w>k
+imap <C-l> <C-w>l
 
 
 " Terminal window navigation
-tnoremap <C-H> <C-\><C-N><C-w>h
-tnoremap <C-J> <C-\><C-N><C-w>j
-tnoremap <C-K> <C-\><C-N><C-w>k
-tnoremap <C-L> <C-\><C-N><C-w>l
-tnoremap <Esc> <C-\><C-n>
+" tnoremap <C-S-h> <C-\><C-N><C-w>h
+" tnoremap <C-S-j> <C-\><C-N><C-w>j
+" tnoremap <C-S-k> <C-\><C-N><C-w>k
+" tnoremap <C-S-l> <C-\><C-N><C-w>l
+" inoremap <C-S-h> <C-\><C-N><C-w>h
+" inoremap <C-S-j> <C-\><C-N><C-w>j
+" inoremap <C-S-k> <C-\><C-N><C-w>k
+" inoremap <C-S-l> <C-\><C-N><C-w>l
+" tnoremap <C-S-n> <C-\><C-n>
 
 " Use alt + hjkl to resize windows
 nnoremap <silent> <M-j>    :resize -5<CR>
@@ -58,10 +49,12 @@ nnoremap <silent> <M-l>    :vertical resize +2<CR>
 nnoremap Y "+y
 nnoremap P "+p
 
-nnoremap <leader>= : ClangFormat <CR>
+" Disable ZZ to quit, easy mixture with zz
+nnoremap ZZ <NOP>
 
 " This is reduandent to what is in which-key.
 " However, without this, the popup menu of which-key 
 "   would popup immediately without delay.
 " Which-key may need at least one raw mapping defined other where?
 nnoremap <leader>. :<C-U>e $MYVIMRC<CR>
+nnoremap <silent> <leader>ah :Ag <C-r><C-w><CR>

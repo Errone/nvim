@@ -50,7 +50,7 @@ let g:fzf_tags_command = 'ctags -R'
 
 " [Commands] --expect expression for directly executing the command
 let g:fzf_commands_expect = 'alt-enter,ctrl-x'
-" =============================
+" ==============================
 
 " ======== User mapping ========
 nnoremap <C-P> :Files<CR>

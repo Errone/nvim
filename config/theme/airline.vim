@@ -1,6 +1,5 @@
 " Set airline theme
-"let g:airline_theme = 'gruvbox'
-let g:airline_theme = 'challenger_deep'
+let g:airline_theme = 'base16_twilight'
 let g:airline_powerline_fonts = 1
 
 if &showtabline != 0
@@ -13,4 +12,3 @@ let g:airline#extensions#default#layout = [
       \ [ 'a', 'b', 'c' ],
       \ [ 'x', 'z', 'error', 'warning']
       \ ]
-

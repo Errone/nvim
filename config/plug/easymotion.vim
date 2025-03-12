@@ -14,4 +14,4 @@ nmap f <Plug>(easymotion-bd-fl)
 
 
 " Jump to {line} in all windows
-nmap T <Plug>(easymotion-overwin-line)
+" nmap t <Plug>(easymotion-overwin-line)
