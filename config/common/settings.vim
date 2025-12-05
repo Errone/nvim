@@ -35,6 +35,25 @@ set shortmess+=c                        " This is recommended by coc. Don't pass
 set signcolumn=yes                      " This is recommended by coc. Always show the signcolumn, or it will blink.
 set updatetime=500                     " This is recommended by coc. Faster completion.
 set timeoutlen=500                      " After how long which key menu will appear.
-set clipboard=unnamedplus               " Copy paste between vim and everything else.
 set jumpoptions=stack                   " Stack like but list like jump history
 
+" -- Use osc52 as clipboard provider
+" local function paste()
+"   return {vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('')}
+" end
+
+vim.g.clipboard = {
+        name = 'OSC 52',
+        copy = {
+                ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+                ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+        },
+        paste = {
+              ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+              ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+              " ['+'] = paste,
+              " ['*'] = paste,
+        },
+}
+
+set clipboard=unnamedplus               " Copy paste between vim and everything else.
