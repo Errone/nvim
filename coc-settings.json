@@ -67,9 +67,13 @@
   "python.linting.flake8Args": [
     "--ignore=E501,W503,W504,F401"
   ],
+  "inlayHint.enable": false,
 
   // clangd
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/19.1.2/clangd_19.1.2/bin/clangd",
   "Lua.telemetry.enable": false,
   "snippets.ultisnips.pythonPrompt": false
+  // "clangd.arguments": [
+  //   "--pch-storage=disk"
+  // ]
 }
